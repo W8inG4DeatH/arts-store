@@ -1,7 +1,7 @@
 // ---------------- 
 //     MIXINS
 // ----------------
-
+ 
 // Important
 
 @function calculateRem($size) {
@@ -12,7 +12,7 @@
 	font-size: $size;
 	font-size: calculateRem($size);
 }
-
+	
 // Prefix Content
 
 @mixin prefix($property, $value, $prefixes) {

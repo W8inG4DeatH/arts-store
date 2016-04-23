@@ -34,33 +34,5 @@
         return mainService;
     });
 
-    app.factory('LoadJsonData', ['$http', '$log', function($http, $log){
-        var cache = {};
-        var urls = {
-            'categories': 'json/categories.json',
-        };
-
-        return function (type, callback){
-            if(angular.isUndefined(cache[type])){
-                callback = callback||function(){};
-
-                var url = urls[type];
-
-                $http.get(urls[type])
-                    .success(function (data, status, headers, config) {
-                        cache[type] = data;
-                        callback(data);
-                    })
-                    .error(function (data, status, headers, config) {
-
-                        $log.error('Wystąpił błąd podczas żądania "'+url+'"!');
-
-                    });
-            } else {
-                callback(data);
-            }
-
-        };
-    }]);
 
 })();
