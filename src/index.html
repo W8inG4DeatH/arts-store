@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pl" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Wallpaper Magazine</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/app/reset.css">
+
+<!-- build:css css/app/styles.min.css -->    
+    <link rel="stylesheet" href="css/app/styles.css"> 
+<!-- endbuild -->
+
+</head>
+
+<body ng-controller="myController">
+
+    <span class="hidden-sm hidden-md hidden-lg">XS</span><span class="hidden-xs hidden-md hidden-lg">SM</span><span class="hidden-sm hidden-xs hidden-lg">MD</span><span class="hidden-sm hidden-md hidden-xs">LG</span>
+
+    <header class="container">
+        <div class="row">
+            <div id="logo" class="col-xs-6 col-md-4">
+                <h1></h1>
+                <p></p>
+            </div>
+            <div class="col-xs-4 hidden-xs hidden-sm text-center">
+                <nav id="menu-center">
+                    <ul>
+                        <li class="menu-center-link cursor-pointer" ng-mouseenter="menuCenterDropdownOnEnter()" ng-click="menuCenterDropdownOnClick()">Content <svg id="menu-center-arrow" ng-class="{'rotate-180': menuCenterDropdownMenu, '': !menuCenterDropdownMenu}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 5.1 3.3" style="enable-background:new 0 0 5.1 3.3;" xml:space="preserve"><path d="M5.1,0L2.5,3.3L0,0.1l2.6,1.5L5.1,0z"></path></svg><underline></underline></li>
+                        <li class="menu-center-link"><a href="">On the Pulse</a><underline></underline></li>
+                        <li class="menu-center-link"><a href="">Calendar</a><underline></underline></li>
+                    </ul>
+                </nav>                
+            </div>
+            <div class="col-xs-6 col-md-4 text-right">
+                <nav id="menu-right">
+                    <ul>
+                        <li><a href="">Content</a></li>
+                        <li><a href="">On the Pulse</a></li>
+                        <li><a href="">Calendar</a></li>
+                    </ul>
+                </nav>                
+            </div>
+        </div>
+    </header>            
+
+    <div class="container position-relative">
+        <nav class="hidden-xs hidden-sm">
+            <div id="menu-center-bar" ng-show="menuCenterDropdownMenu">
+                <ul>
+                    <li ng-repeat="category in categories">{{category.name}}</li>
+                </ul>
+            </div>            
+        </nav>
+        <aside class="position-relative">
+            <div id="slider">
+                SLIDER
+            </div>                    
+        </aside>
+    </div>
+
+    
+
+
+</body>
+
+<!-- SCRIPTS -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+
+<!-- build:js js/app/scripts.js -->
+    <script src="js/app/filters.js"></script>
+    <script src="js/app/directives.js"></script>
+    <script src="js/app/services.js"></script>
+    <script src="js/app/controllers.js"></script>
+    <script src="js/app/main.js"></script>
+<!-- endbuild -->
+
+    <script>
+        var app = angular.module('myApp', ['myControllers']);
+    </script>
+
+</html>

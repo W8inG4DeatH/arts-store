@@ -1,0 +1,130 @@
+@import "mixins";
+
+$color-global: #555555; 
+$color-medium: #a0a0a0;
+$color-light: #e8e8e8;
+$color-black: #333333;
+$color-white: #eeeeee;
+
+@include selection($color-global,$color-white);
+
+html {
+	font-size: 62.5%;
+}
+
+body { 
+	font-family: 'Georgia', 'Arial', serif;
+	color: $color-black;
+    font-size: 1.2rem; 	// = 10px
+    @include link-colors($color-black,$color-white,$color-white,$color-black);
+}
+
+h1 {
+	font-size: 2.6rem;
+}
+
+li {
+	display: block;
+}
+
+a:hover {
+	text-decoration: none;
+}
+underline {
+	position: absolute;
+	display: block;
+	width: 0%;
+	height: 1px;
+	background-color: $color-black;
+	left: 0;
+	bottom: 0;
+}
+.rotate-180 {
+	@include prefix(transform, rotate(180deg), webkit ms);
+}
+
+.container {
+	width: 98%;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.row {
+	width: 94%;
+	margin-top: 15px;
+	margin-right: 2%;
+	margin-bottom: 15px;
+	margin-left: 2%;
+}
+
+.cursor-pointer {
+	cursor: pointer;
+}
+.position-relative {
+	position: relative;
+}
+.position-absolute {
+	position: absolute;
+	top: 0;
+}
+
+/////////////////////////////////////////////////////////////
+
+#logo {
+	font-weight: bold;
+}
+
+#menu-center {
+	opacity: 0;
+}
+#menu-center ul li {
+	position: relative;
+	display: inline-block;
+	padding: 4px;
+	margin: 8px 4px;
+	font-size: 1.6rem;
+}
+#menu-center-arrow {
+	width: 10px;
+	height: 10px;
+}
+#menu-center-bar {
+	width: 100%;
+	background-color: $color-light;
+	color: $color-medium;
+	text-align: center;
+	position: relative;
+	z-index:88888;
+}
+#menu-center-bar ul li {
+	display: inline-block;
+	padding: 35px 15px;
+	font-size: 2rem;
+}
+
+#slider {
+	width: 100%;
+	height: 400px;
+	background-color: blue;
+}
+
+
+
+//////////////
+// ANIMACJE //
+
+.animation-1 {
+	@include prefix(animation, animation-1-frames ease 1s, webkit moz o ms);
+	@include prefix(animation-iteration-count, 1, webkit moz o ms);
+	@include prefix(transform-origin, 50% 50%, webkit moz o ms);
+	@include prefix(animation-fill-mode, forwards, webkit moz o ms);
+}
+
+@include prefix-content(animation-1-frames) {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }	
+}
