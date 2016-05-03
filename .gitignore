@@ -1,7 +1,7 @@
 # ML
 
 node_modules
-build
+.tmp
 
 # Windows image file caches
 Thumbs.db
