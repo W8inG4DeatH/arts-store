@@ -128,7 +128,7 @@
 }
 
 // Transitions
-@mixin transition($props: all, $speed: 0.2s, $easing: linear) {
+@mixin transition($props: all, $speed: 0.5s, $easing: linear) {
 	@include prefix(transition, $props $speed $easing, webkit moz o ms);
 	transition: $props $speed $easing;
 }

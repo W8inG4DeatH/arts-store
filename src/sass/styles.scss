@@ -17,6 +17,7 @@ body {
 	color: $color-black;
     font-size: 1.2rem; 	// = 10px
     @include link-colors($color-black,$color-white,$color-white,$color-black);
+    background-color: #f4f4f4;
 }
 
 h1 {
@@ -45,6 +46,7 @@ underline {
 }
 
 .container {
+	position: relative;
 	width: 98%;
 	margin-top: 20px;
 	margin-bottom: 20px;
@@ -69,6 +71,7 @@ underline {
 	top: 0;
 }
 
+
 /////////////////////////////////////////////////////////////
 
 #logo {
@@ -81,7 +84,7 @@ underline {
 }
 
 #menu-center {
-	opacity: 0;
+	
 }
 #menu-center ul li {
 	position: relative;
@@ -107,20 +110,13 @@ underline {
 	font-size: 2rem;
 }
 
-#slider {
-	position: relative;
-	width: 100%;
-	height: 400px;
-	background-color: blue;
-}
-
 .menu-right-icon {
 	width: 26px;
 	height: 26px;
 }
 
 #menu-right {
-	opacity: 0;
+	
 	font-size: 1.1rem;
 }
 #menu-right ul li, #menu-right ul span {
@@ -162,8 +158,81 @@ underline {
 	margin: 10px 0;
 }
 
-//////////////
-// ANIMACJE //
+/////////////////////////////////////////////////////////////
+// GALLERY //
+
+.container-gallery {
+	background-color: #ffffff;
+	margin: 2% 3%;
+	padding: 1% 2%;
+}
+.row-gallery {
+	margin: 2% 0;
+}
+ 
+.gallery-title {
+	position: relative;
+	width: 100%;
+	height: 2rem;
+}
+.gallery-title-element {
+	position: absolute;
+	display: inline-block;
+	margin: auto;
+	top: 0;
+	bottom: 0;
+}
+.gallery-title-text {
+	left: 0;
+	right: 0;
+	font-size: 2rem;
+	font-weight: bold;
+}
+.gallery-title-line {
+	width: 35%;
+	height: 1px;
+	background-color: $color-light;
+}
+.gallery-title-left-line {
+	left: 0;
+}
+.gallery-title-right-line {
+	right: 0;
+}
+
+.gallery-img {
+	@include transition();
+	@include filter(grayscale(75%));
+	cursor: pointer;
+}
+.gallery-img-nogray {
+	@include filter(grayscale(0%));
+	@include prefix(transform, scale(1.05), webkit moz o ms);
+}
+.gallery-art-location-desc {
+	color: $color-medium;
+	font-size: 1.2rem;
+	margin: 20px 0;
+}
+.gallery-art-title {
+	font-size: 2rem;
+	margin: 15px 0;
+}
+.gallery-art-desc {
+	color: $color-medium;
+	font-size: 1.5rem;
+	margin: 15px 0;
+}
+.gallery-btn {
+	display: inline-block;
+	height: 35px;
+	@include border-radius($color-light,1px,solid,20px,20px);
+	padding: 10px 30px;
+	cursor: pointer;
+}
+
+/////////////////////////////////////////////////////////////
+// ANIMATIONS //
 
 .animation-1 {
 	@include prefix(animation, animation-1-frames ease 1s, webkit moz o ms);
@@ -179,4 +248,133 @@ underline {
   100% {
     opacity:1;
   }	
+}
+
+////////////
+// SLIDER // 
+////////////
+
+.w8-slider {
+	position: relative;
+	width: 100%;
+	color: $color-white;
+	font-weight: bolder;
+}
+.w8-slider-slide {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	opacity: 0;
+}
+#w8-slider-slide1 {
+	position: relative;
+	opacity: 1;	
+}
+.w8-slider-slide-img {
+	position: relative;
+	display: inline-block;
+	vertical-align: top;
+	width: 50%;
+	opacity: 0.5;
+	@include filter(grayscale(100%));
+}
+.w8-slider-content {
+	position: absolute;
+	margin: auto;
+	left: 0;
+	right: 0;
+	top: 0;
+	width: 100%;
+	height: 80%;
+}
+.w8-slider-name {
+	position: relative;
+	margin-top: 1%;
+	width: 100%;
+	height: 1.4rem;
+}
+.w8-slider-name-element {
+	position: absolute;
+	display: inline-block;
+	margin: auto;
+	top: 0;
+	bottom: 0;
+}
+.w8-slider-name-text {
+	left: 0;
+	right: 0;
+}
+.w8-slider-name-line {
+	width: 35%;
+	height: 1px;
+	background-color: $color-white;
+	opacity: 0.25;	
+}
+.w8-slider-name-line-opacited {
+	width: 35%;
+	opacity: 1;	
+}
+.w8-slider-name-left-line {
+	left: 2%;
+}
+.w8-slider-name-right-line {
+	right: 2%;
+}
+.w8-slider-text {
+	position: absolute;
+	margin: auto;
+	top: 45%;
+	left: 0;
+	right: 0;
+	width: 80%;
+}
+.w8-slider-text-title {
+	font-size: 3rem;
+}
+.w8-slider-text-desc {
+	margin-top: 2%;
+	font-size: 1.6rem;
+	line-height: 2rem;
+}
+
+#w8-slider-panel {
+	position: absolute;
+	width: 100%;
+	margin: auto;
+	left: 0;
+	right: 0;
+	top: 50%;
+	margin-top: -50px;
+	z-index: 55555;
+	opacity: 0;
+}
+.w8-slider-panel-btn {
+	position: relative;
+	cursor: pointer;
+	opacity: 0.15;
+}
+#w8-slider-panel-btn-left {
+	float: left;
+	margin-left: 2%;
+}
+#w8-slider-panel-btn-right {
+	float: right;
+	margin-right: 2%;
+}
+#w8-slider-panel-btn-pause {
+}
+
+#w8-slider-panel2 {
+	position: absolute;
+	width: 100%;
+	margin: auto;
+	left: 0;
+	right: 0;
+	bottom: 10px;
+}
+.w8-slider-panel2-point {
+	position: relative;
+	cursor: pointer;
+	margin: 1px;
+	opacity: 0.5;
 }
