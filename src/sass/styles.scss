@@ -16,8 +16,13 @@ body {
 	font-family: 'Georgia', 'Arial', serif;
 	color: $color-black;
     font-size: 1.2rem; 	// = 10px
-    @include link-colors($color-black,$color-white,$color-white,$color-black);
+    @include link-colors($color-black,$color-black,$color-black,$color-black);
     background-color: #f4f4f4;
+}
+
+.outsite {
+	position: absolute;
+	margin-left: -2000px;
 }
 
 h1 {
@@ -36,13 +41,19 @@ underline {
 	position: absolute;
 	display: block;
 	width: 0%;
-	height: 1px;
+	height: 1px; 
 	background-color: $color-black;
 	left: 0;
 	bottom: 0;
+} 
+.rotate-90 {
+	@include prefix(transform, rotate(90deg), webkit ms);
 }
 .rotate-180 {
 	@include prefix(transform, rotate(180deg), webkit ms);
+}
+.rotate-270 {
+	@include prefix(transform, rotate(270deg), webkit ms);
 }
 
 .container {
@@ -74,7 +85,7 @@ underline {
 
 /////////////////////////////////////////////////////////////
 
-#logo {
+.logo {
 	font-weight: bold;
 }
 
@@ -82,18 +93,30 @@ underline {
 	width: 10px;
 	height: 10px;
 }
+.btn-icon {
+	width: 15px;
+	height: 15px;
+}
+.arrow-btn {
+	display: inline-block;
+	height: 40px;
+	@include border-radius($color-light,1px,solid,20px,20px);
+	padding: 12px;
+	cursor: pointer;
+}
 
-#menu-center {
+
+.menu-center {
 	
 }
-#menu-center ul li {
+.menu-center ul li {
 	position: relative;
 	display: inline-block;
 	padding: 4px;
 	margin: 8px 8px;
 	font-size: 1.6rem;
 }
-#menu-center-bar {
+.menu-center-bar {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -104,7 +127,7 @@ underline {
 	color: $color-medium;
 	text-align: center;
 }
-#menu-center-bar ul li {
+.menu-center-bar ul li {
 	display: inline-block;
 	padding: 35px 15px;
 	font-size: 2rem;
@@ -115,11 +138,11 @@ underline {
 	height: 26px;
 }
 
-#menu-right {
+.menu-right {
 	
 	font-size: 1.1rem;
 }
-#menu-right ul li, #menu-right ul span {
+.menu-right ul li, .menu-right ul span {
 	display: inline-block;
 	vertical-align: middle;
 	letter-spacing: 2px;
@@ -128,13 +151,13 @@ underline {
 	font-size: 2rem;
 	color: $color-medium;
 }
-#menu-right ul li div, #menu-right ul li svg {
+.menu-right ul li div, .menu-right ul li svg {
 	display: inline-block;
 	vertical-align: middle;
 	padding: 3px;
 }
 
-#menu-right-xs {
+.menu-right-xs {
 	position: absolute;
 	width: 100%;
 	height: 100%;
@@ -144,11 +167,11 @@ underline {
 	padding: 100px 50px;
 }
 
-#menu-right-xs li {
+.menu-right-xs li {
 	padding: 20px;
 	cursor: pointer;
 }
-#menu-right-xs-submenu {
+.menu-right-xs-submenu {
 	color: $color-medium;
 }
 .menu-right-xs-separator {
@@ -209,6 +232,7 @@ underline {
 	@include filter(grayscale(0%));
 	@include prefix(transform, scale(1.05), webkit moz o ms);
 }
+
 .gallery-art-location-desc {
 	color: $color-medium;
 	font-size: 1.2rem;
@@ -223,6 +247,10 @@ underline {
 	font-size: 1.5rem;
 	margin: 15px 0;
 }
+.gallery-art-panel {
+	height: 40px;
+	margin-bottom: 20px;
+}
 .gallery-btn {
 	display: inline-block;
 	height: 35px;
@@ -230,6 +258,62 @@ underline {
 	padding: 10px 30px;
 	cursor: pointer;
 }
+
+.footer-container {
+	width: 100%;
+	background-color: #ffffff;
+	padding: 40px 0 20px 0;
+}
+.footer-element {
+	margin-bottom: 5%;
+}
+.copyright {
+	color: $color-medium;
+	font-size: 1rem;
+}
+
+/////////////////////////////////////////////////////////////
+
+.bg-formular {
+	background-color: #ffffff;
+	padding: 6%;
+}
+.container-formular {
+	width: 100%;
+	border: 1px solid $color-light;
+}
+.row-formular {
+	margin: 5%;
+}
+.form-control {
+	width: 50%;
+	display: inline-block;
+	@include border-radius($color-light,1px,solid,20px,20px);
+	color: $color-medium;
+}
+.form-info {
+	display: block;
+	width: 50%;
+	height: 35px;
+	@include border-radius($color-light,1px,solid,20px,20px);
+	padding: 10px 30px;
+	margin: 5px auto;
+	cursor: pointer;
+}
+.form-btn {
+	display: inline-block;
+	width: 50%;
+	height: 45px;
+	@include border-radius($color-black,1px,solid,20px,20px);
+	background-color: $color-black;
+	color: $color-light;
+	padding: 15px 30px;
+	cursor: pointer;
+}
+
+.info-block {
+    color: #d00;
+} 
 
 /////////////////////////////////////////////////////////////
 // ANIMATIONS //

@@ -127,7 +127,41 @@
             return galleryData;
         };
 
+        ////////////////////////////////////////////////////////////////////////////////////////////
 
+        mainService.setCookie = function(name, value, days, path, domain, secure) {   // secure - tylko na https
+            if(!navigator.cookieEnabled) return;    // zakończenie funkcji, jeśli przeglądarka nie wspiera cookies
+            var euc = encodeURIComponent;       
+            var cookie = euc(name) + "=" + euc(value);
+            if(typeof days === "number") {
+                var date = new Date();
+                date.setTime(date.getTime() + days * 1000 * 60 * 60 * 24);
+                cookie += "; expires=" + date.toGMTString();
+            }
+            if(path) {
+                cookie += "; path=" + path;
+            }
+            if(domain) {
+                cookie += "; domain=" + domain;
+            }
+            if(secure) {
+                cookie += "; secure;";
+            }
+            document.cookie = cookie;
+        };
+
+        mainService.getCookie = function(name) {
+            if(!document.cookie) return null;
+            var arr = document.cookie.split(/; */),
+                cookies = {};
+            arr.forEach(function(cookie) {
+                cookie = cookie.split("=");
+                cookies[cookie[0]] = decodeURIComponent(cookie[1]);
+            });
+            return cookies[name] || null;
+        };
+
+        ////////////////////////////////////////////////////////////////////////////////////////////
         
         mainService.StartTooltip = function() {
             $('[data-toggle="tooltip"]').tooltip({
@@ -178,6 +212,8 @@
                 }
             }
         };
+
+        ////////////////////////////////////////////////////////////////////////////////////////////
 
         mainService.StartSlider = function(sliderId,numberOfSlides,slideDelay,slideTime) {
             
@@ -278,6 +314,8 @@
             w8slider.init(sliderId,numberOfSlides,slideDelay,slideTime);
 
         };
+
+        ////////////////////////////////////////////////////////////////////////////////////////////
 
         mainService.GetRandomInt = function(min, max) {
             var myInt = max+1;

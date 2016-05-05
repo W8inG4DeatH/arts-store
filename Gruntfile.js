@@ -245,10 +245,13 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks("grunt-usemin");     // targetuje index.html ?
     grunt.loadNpmTasks("grunt-contrib-watch"); // auto rebuild, który wykonuje "dev"
 
-    grunt.registerTask("dev", ["jshint", "autoprefixer"]);
-    // grunt.registerTask("prod", ["clean", "copy:cssscripts", "copy:jsscripts", "copy:jsapp", "copy:assets", "useminPrepare", "concat", "cssmin", "usemin"]);    // concat tylko dla .css
-    grunt.registerTask("prod", ["clean", "copy:cssapp", "copy:cssscripts", "copy:jsscripts", "copy:assets", "useminPrepare", "concat", "cssmin", "usemin"]);     // concat dla .css i .js (index.html <!-- build:js js/app/scripts.js -->)
+    // grunt.registerTask("dev", ["jshint", "autoprefixer"]);
+    // // grunt.registerTask("prod", ["clean", "copy:cssscripts", "copy:jsscripts", "copy:jsapp", "copy:assets", "useminPrepare", "concat", "cssmin", "usemin"]);    // concat tylko dla .css
+    // grunt.registerTask("prod", ["clean", "copy:cssapp", "copy:cssscripts", "copy:jsscripts", "copy:assets", "useminPrepare", "concat", "cssmin", "usemin"]);     // concat dla .css i .js (index.html <!-- build:js js/app/scripts.js -->)
+    // grunt.registerTask("build", ["dev", "prod"]);
+    // grunt.registerTask("build", "dev");
+
+    grunt.registerTask("dev", ["jshint", "autoprefixer", "clean", "copy:cssapp", "copy:cssscripts", "copy:jsscripts", "copy:assets", "useminPrepare", "concat", "cssmin", "usemin"]);
     grunt.registerTask("default", "dev");
-    grunt.registerTask("build", ["dev", "prod"]);
 
 };
