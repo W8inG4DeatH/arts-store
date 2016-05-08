@@ -169,7 +169,8 @@
             });
         };        
 
-        mainService.AnimateWord = function(myTag,myWord,myDelay,myStep) {
+        mainService.AnimateWord = function(myTag,myWord,myDelay,myStep,fade) {
+            $(myTag).empty();
             var myChars = myWord.split("");
             var i = 0;
             var myTimer;
@@ -181,7 +182,9 @@
                 var myText = document.createTextNode(myChars[i]);
                 mySpan.appendChild(myText);
                 $(myTag).append(mySpan);
-                mySpan.classList.add('animation-1');
+                if (fade) {
+                    mySpan.classList.add('animation-1');                    
+                }
                 i++;
                 if (i >= myChars.length) {
                     clearInterval(myTimer);

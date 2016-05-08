@@ -15,8 +15,8 @@
                     <h3 class="outsite">{{gallery.arts[landing-1].title | capitalize}} Art</h3>
                         <img ng-click="GoToArt(gallery.name,landing)" ng-mouseenter="galleryImgClass='gallery-img-nogray'" ng-mouseleave="galleryImgClass=''" ng-class="galleryImgClass" class="img-responsive gallery-img" ng-srcset="img/arts/thumbs/{{gallery.name}}-{{landing}}.jpg"/>
                         <div class="gallery-art-location-desc"><b>ART</b> in <b>{{gallery.name | uppercase}}</b></div>
-                        <div class="gallery-art-title">{{gallery.arts[landing-1].title}}</b></div>
-                        <div class="gallery-art-desc">{{gallery.arts[landing-1].desc}}</b></div>
+                        <div class="gallery-art-title"><h4><b>{{gallery.arts[landing-1].title}}</b></h4></div>
+                        <div class="gallery-art-desc"><p>{{gallery.arts[landing-1].desc}}</p></div>
                     </article>
                 </div>                
             </div>

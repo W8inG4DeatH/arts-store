@@ -142,8 +142,8 @@
         // START //
 
         $scope.showWebsiteData = {
-            a1 : {mode: "AnimateWord", selector: ".logo > h1", word: "A R T S", stepTime: 75, delayTime: 0},
-            a2 : {mode: "AnimateWord", selector: ".logo > p", word: "S T O R E", stepTime: 33, delayTime: 0},
+            a1 : {mode: "AnimateWord", selector: ".logo > h1", word: "A R T S", stepTime: 75, delayTime: 0, fade: true},
+            a2 : {mode: "AnimateWord", selector: ".logo > p", word: "S T O R E", stepTime: 33, delayTime: 0, fade: true},
             a3 : {mode: "FadeIn", selector: ".menu-center", stepTime: 500, delayTime: 0},
             a4 : {mode: "FadeIn", selector: ".menu-right", stepTime: 500, delayTime: 0},
             a5 : {mode: "FadeIn", selector: ".w8-slider", stepTime: 500, delayTime: 0},
@@ -206,18 +206,6 @@
 
         $scope.$parent.menuRight = false;
 
-        $scope.showGalleryData = {
-            a1 : {mode: "FadeIn", selector: ".gallery-show-1", stepTime: 500, delayTime: 0},
-            a2 : {mode: "FadeIn", selector: ".gallery-show-2", stepTime: 500, delayTime: 0},
-            a3 : {mode: "FadeIn", selector: ".gallery-show-3", stepTime: 500, delayTime: 0},
-            a4 : {mode: "FadeIn", selector: ".gallery-show-4", stepTime: 500, delayTime: 0},
-            a5 : {mode: "FadeIn", selector: ".gallery-show-5", stepTime: 500, delayTime: 0}
-        };
-
-        angular.element(document).ready(function() {
-            mainService.ShowWebsite($scope.showGalleryData);
-        });
-
         $scope.SetActiveCategory = function (categoryAlias, artAlias) {
             if (categoryAlias) {
                 for (var i = 0; i < $scope.galleryData.length; i ++) {
@@ -236,16 +224,35 @@
         };
         $scope.SetActiveCategory($routeParams.categoryAlias,$routeParams.artAlias);
 
+        $scope.AnimateGallery = function () {
+            var showGalleryData = {
+                a1 : {mode: "FadeIn", selector: ".gallery-show-1", stepTime: 500, delayTime: 0},
+                a2 : {mode: "FadeIn", selector: ".gallery-show-2", stepTime: 500, delayTime: 0},
+                a3 : {mode: "FadeIn", selector: ".gallery-show-3", stepTime: 500, delayTime: 0},
+                a4 : {mode: "FadeIn", selector: ".gallery-show-4", stepTime: 500, delayTime: 0},
+                a5 : {mode: "FadeIn", selector: ".gallery-show-5", stepTime: 500, delayTime: 0},
+                a6 : {mode: "AnimateWord", selector: ".gallery-art-title > h4", word: $scope.$parent.galleryData[$scope.$parent.activeCategoryID].arts[$scope.$parent.activeArt-1].title, stepTime: 10, delayTime: 500, fade: false},
+                a7 : {mode: "AnimateWord", selector: ".gallery-art-desc > p", word: $scope.$parent.galleryData[$scope.$parent.activeCategoryID].arts[$scope.$parent.activeArt-1].desc, stepTime: 1, delayTime: 500, fade: false}
+            };
+            mainService.ShowWebsite(showGalleryData);
+        };
+
         $scope.NextArt = function () {
             if ($scope.$parent.activeArt < $scope.$parent.galleryData[$scope.$parent.activeCategoryID].arts.length) {
                 $scope.$parent.activeArt++;
             }
+            $scope.AnimateGallery();
         };
         $scope.PreviousArt = function () {
             if ($scope.$parent.activeArt > 1) {
                 $scope.$parent.activeArt--;
             }
+            $scope.AnimateGallery();
         };
+
+        angular.element(document).ready(function() {
+            $scope.AnimateGallery();
+        });
 
     }]);
 
@@ -255,7 +262,13 @@
 
     app.controller('registrationController', ['$scope', '$http', '$window', '$location', 'mainService', function($scope, $http, $window, $location, mainService){
 
-        mainService.StartTooltip();
+        angular.element(document).ready(function() {
+            mainService.StartTooltip();
+            $scope.showData = {
+                a1 : {mode: "FadeIn", selector: ".container-formular", stepTime: 500, delayTime: 0}
+            };
+            mainService.ShowWebsite($scope.showData);
+        });
 
         $scope.$parent.menuRight = false;
         $scope.registrationFail = false;
@@ -291,6 +304,10 @@
         $scope.$parent.menuRight = false;
         angular.element(document).ready(function() {
             mainService.StartTooltip();
+            $scope.showData = {
+                a1 : {mode: "FadeIn", selector: ".container-formular", stepTime: 500, delayTime: 0}
+            };
+            mainService.ShowWebsite($scope.showData);
         });
 
         $scope.users = [];
@@ -313,7 +330,12 @@
         $scope.$parent.menuRight = false;
         angular.element(document).ready(function() {
             mainService.StartTooltip();
+            $scope.showData = {
+                a1 : {mode: "FadeIn", selector: ".container-formular", stepTime: 500, delayTime: 0}
+            };
+            mainService.ShowWebsite($scope.showData);
         });
+
         $scope.$parent.getUsers();
         $scope.emailError = $scope.passwordError = $scope.activationError = false;
 
@@ -356,6 +378,10 @@
         $scope.$parent.menuRight = false;
         angular.element(document).ready(function() {
             mainService.StartTooltip();
+            $scope.showData = {
+                a1 : {mode: "FadeIn", selector: ".container-formular", stepTime: 500, delayTime: 0}
+            };
+            mainService.ShowWebsite($scope.showData);
         });
         $scope.$parent.getUsers();
         $scope.$parent.recoveryError = false;
@@ -589,7 +615,8 @@
             });
         };        
 
-        mainService.AnimateWord = function(myTag,myWord,myDelay,myStep) {
+        mainService.AnimateWord = function(myTag,myWord,myDelay,myStep,fade) {
+            $(myTag).empty();
             var myChars = myWord.split("");
             var i = 0;
             var myTimer;
@@ -601,7 +628,9 @@
                 var myText = document.createTextNode(myChars[i]);
                 mySpan.appendChild(myText);
                 $(myTag).append(mySpan);
-                mySpan.classList.add('animation-1');
+                if (fade) {
+                    mySpan.classList.add('animation-1');                    
+                }
                 i++;
                 if (i >= myChars.length) {
                     clearInterval(myTimer);
