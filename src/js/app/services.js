@@ -169,8 +169,10 @@
             });
         };        
 
-        mainService.AnimateWord = function(myTag,myWord,myDelay,myStep,fade) {
+        mainService.EmptyWord = function(myTag) {
             $(myTag).empty();
+        };
+        mainService.AnimateWord = function(myTag,myWord,myDelay,myStep,fade) {
             var myChars = myWord.split("");
             var i = 0;
             var myTimer;
@@ -191,13 +193,13 @@
                 }
             }
         };
+        mainService.SetNoOpacity = function(myTag) {
+            $(myTag).css('opacity','0');
+        };
         mainService.FadeIn = function(myTag,myDelay,myStep) {
             var FadeInShow = setTimeout(function() {
                 $(myTag).animate({opacity: '1'}, myStep);
             }, myDelay);
-        };
-        mainService.SetNoOpacity = function(myTag) {
-            $(myTag).css('opacity','0');
         };
 
         mainService.ShowWebsite = function(showWebsiteData) {
@@ -205,10 +207,11 @@
             for (var key in showWebsiteData) {
                 switch (showWebsiteData[key].mode) {
                     case "AnimateWord":
+                        mainService.EmptyWord(showWebsiteData[key].selector);
                         mainService.AnimateWord(showWebsiteData[key].selector,showWebsiteData[key].word,(totalTime+showWebsiteData[key].delayTime),showWebsiteData[key].stepTime);
                         totalTime += showWebsiteData[key].delayTime + (showWebsiteData[key].word.length * showWebsiteData[key].stepTime);
                         break;
-                    default:
+                    default:      // "FadeIn"
                         mainService.SetNoOpacity(showWebsiteData[key].selector);
                         mainService.FadeIn(showWebsiteData[key].selector,(totalTime+showWebsiteData[key].delayTime),showWebsiteData[key].stepTime);
                         totalTime += showWebsiteData[key].delayTime + showWebsiteData[key].stepTime;
