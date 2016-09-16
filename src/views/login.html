@@ -28,7 +28,7 @@
 
 			    <div class="form-group">
 			        <div class="text-center">
-			            <button ng-click="Login()" ng-mouseenter="SlideUpAndDownChildByClass($event,'.btn-content')" id="submit" name="submit" type="submit" class="form-btn" ng-disabled="formular.email.$error.required||formular.email.$error.email||formular.password.$error.required" data-loading-text="Login..." data-sent-text="You are logged"><span class="btn-content">Login</span></button>
+			            <button ng-click="Login()" id="submit" name="submit" type="submit" class="form-btn" ng-disabled="formular.email.$error.required||formular.email.$error.email||formular.password.$error.required" data-loading-text="Login..." data-sent-text="You are logged"><span class="btn-content">Login</span></button>
 				        <div ng-show="emailError" class="form-info text-center">
 				            <span class="info-block">Login error. E-mail does not exists in database!</span>
 				        </div>
